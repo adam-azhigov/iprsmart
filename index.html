@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Статистическая отчётность — IPR smart</title>
+<style>
+  :root{
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #2563eb;
+    --primary-soft: #e0e9ff;
+    --success: #10b981;
+    --success-soft: #e6f7f1;
+    --border: #e5e7eb;
+    --shadow: 0 4px 18px rgba(17,24,39,.06);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.55;
+    padding: 32px 16px;
+  }
+  .wrap{max-width: 1080px; margin: 0 auto;}
+
+  /* Header */
+  header{
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color:#fff;
+    padding: 28px 32px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  header h1{ margin:0 0 6px; font-size: 26px; letter-spacing:.2px;}
+  header .subtitle{ opacity:.9; font-size:15px;}
+  header .period{
+    display:inline-block;
+    margin-top:14px;
+    padding:6px 14px;
+    background: rgba(255,255,255,.18);
+    border-radius: 999px;
+    font-size:14px;
+  }
+
+  /* Cards */
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .card{
+    background: var(--card);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: transform .15s ease;
+  }
+  .card:hover{ transform: translateY(-2px);}
+  .card .label{
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing:.5px;
+    font-weight:600;
+    margin-bottom: 8px;
+  }
+  .card .value{
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--text);
+    line-height:1.1;
+  }
+  .card .delta{
+    display:inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .delta.up{ background: var(--success-soft); color: var(--success); }
+  .delta.note{ background: var(--primary-soft); color: var(--primary); }
+
+  /* Sections */
+  section{
+    background: var(--card);
+    border-radius: 14px;
+    padding: 26px 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+  }
+  section h2{
+    margin: 0 0 16px;
+    font-size: 19px;
+    color: var(--text);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-soft);
+  }
+  p{ margin: 0 0 12px; color: #374151;}
+  .muted{ color: var(--muted);}
+
+  /* Table */
+  table{
+    width:100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    font-size: 15px;
+  }
+  thead th{
+    background: var(--primary-soft);
+    color: #1e3a8a;
+    text-align:left;
+    padding: 12px 14px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td{
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:last-child td{ border-bottom: none; }
+  tbody tr:nth-child(even){ background: #fafbfd; }
+  tbody tr.total td{
+    font-weight: 700;
+    background: var(--primary-soft);
+    color: #1e3a8a;
+  }
+  td.num{ text-align: right; font-variant-numeric: tabular-nums;}
+  th.num{ text-align: right;}
+
+  /* Note */
+  .note{
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #78350f;
+    margin-top: 16px;
+  }
+
+  footer{
+    text-align:center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 12px 0 4px;
+  }
+
+  @media (max-width: 600px){
+    header{ padding: 22px;}
+    header h1{ font-size: 20px;}
+    .card .value{ font-size: 28px;}
+    section{ padding: 20px;}
+    thead th, tbody td{ padding: 10px;}
+  }
+
+  @media print{
+    body{ background:#fff; padding:0;}
+    .card, section, header{ box-shadow:none; border:1px solid #ccc;}
+    header{ background:#2563eb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Статистическая отчётность по IPR smart</h1>
+    <div class="subtitle">Ключевые показатели использования платформы</div>
+    <div class="period">Период: 01.01.2026 — 30.10.2026</div>
+  </header>
+
+  <!-- KPI cards -->
+  <div class="cards">
+    <div class="card">
+      <div class="label">Зарегистрировано учётных записей</div>
+      <div class="value">2 935</div>
+      <div class="delta up">▲ +5544% к 2025 году</div>
+    </div>
+    <div class="card">
+      <div class="label">Всего книговыдач</div>
+      <div class="value">12 277</div>
+      <div class="delta up">▲ +19% к аналог. периоду</div>
+    </div>
+    <div class="card">
+      <div class="label">Активных пользователей</div>
+      <div class="value">120</div>
+      <div class="delta up">▲ +823% к 2025 году</div>
+    </div>
+  </div>
+
+  <!-- Narrative -->
+  <section>
+    <h2>Общая сводка</h2>
+    <p>
+      За отчётный период для организации зарегистрировано
+      <strong>2 935 персональных учётных записей</strong> — это на
+      <strong>5544% больше</strong>, чем за весь 2025 год
+      (52 пользователя). Столь значительный рост объясняется тем, что в текущем
+      учебном году <strong>все первокурсники были зарегистрированы согласно плану</strong>.
+    </p>
+    <p>
+      Всего за указанный период выполнено <strong>12 277 книговыдач</strong>, что на
+      <strong>19% больше</strong> по сравнению с аналогичным периодом прошлого года.
+      Количество активных пользователей составило <strong>120 человек</strong> — на
+      <strong>823% больше</strong>, чем за весь 2025 год.
+    </p>
+  </section>
+
+  <!-- Breakdown -->
+  <section>
+    <h2>Структура зарегистрированных пользователей</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Категория</th>
+          <th class="num">Количество</th>
+          <th class="num">Доля</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Студенты</td>
+          <td class="num">2 818</td>
+          <td class="num">96,0%</td>
+        </tr>
+        <tr>
+          <td>Преподаватели</td>
+          <td class="num">98</td>
+          <td class="num">3,3%</td>
+        </tr>
+        <tr>
+          <td>Сотрудники</td>
+          <td class="num">17</td>
+          <td class="num">0,6%</td>
+        </tr>
+        <tr>
+          <td>Аспиранты</td>
+          <td class="num">2</td>
+          <td class="num">0,1%</td>
+        </tr>
+        <tr class="total">
+          <td>Итого</td>
+          <td class="num">2 935</td>
+          <td class="num">100%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Основную долю зарегистрированных пользователей составляют студенты —
+      рост обусловлен плановой регистрацией всех первокурсников в текущем учебном году.
+    </div>
+  </section>
+
+  <footer>
+    Отчёт подготовлен по данным платформы IPR smart · период 01.01.2026 — 30.10.2026
+  </footer>
+
+</div>
+</body>
+</html>
